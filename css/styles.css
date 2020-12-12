@@ -65,7 +65,7 @@ button {
   display: flex;
   flex-shrink: 0; }
   .send-form input {
-    background: black;
+    background: none;
     border: none;
     color: rgba(0, 0, 0, 0.87);
     flex-grow: 1;

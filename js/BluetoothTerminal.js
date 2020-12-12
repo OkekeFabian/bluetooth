@@ -12,7 +12,7 @@ class BluetoothTerminal {
    * @param {Function|undefined} [onConnected=undefined] - Listener for connected event.
    * @param {Function|undefined} [onDisconnected=undefined] - Listener for disconnected event.
    */
-  constructor(serviceUuid = 0xFFE0, characteristicUuid = 0xFFE1, receiveSeparator = '\n', sendSeparator = '\n',
+  constructor(serviceUuid = 0x2A25, characteristicUuid = 0xFFE1, receiveSeparator = '\n', sendSeparator = '\n',
       onConnected = undefined, onDisconnected = undefined) {
     // Used private variables.
     this._receiveBuffer = ''; // Buffer containing not separated data.
@@ -46,8 +46,9 @@ class BluetoothTerminal {
     if (!uuid) {
       throw new Error('UUID cannot be a null');
     }
-
+    console.log(uuid)
     this._serviceUuid = uuid;
+    
   }
 
   /**
@@ -56,6 +57,7 @@ class BluetoothTerminal {
    * @param {!(number|string)} uuid - Characteristic UUID.
    */
   setCharacteristicUuid(uuid) {
+
     if (!Number.isInteger(uuid) && !(typeof uuid === 'string' || uuid instanceof String)) {
       throw new Error('UUID type is neither a number nor a string');
     }
@@ -65,6 +67,7 @@ class BluetoothTerminal {
     }
 
     this._characteristicUuid = uuid;
+    
   }
 
   /**
@@ -273,11 +276,13 @@ class BluetoothTerminal {
    * @private
    */
   _requestBluetoothDevice() {
-    this._log('Requesting bluetooth device...');
-     console.log(this._serviceUuid);
-    return navigator.bluetooth.requestDevice({
-      filters: [{services: [this._serviceUuid]}],
-    }).
+    this._log('Requesting bluetooth devicee...');
+
+    let options = {
+      acceptAllDevices:true
+    }
+
+    return navigator.bluetooth.requestDevice(options).
         then((device) => {
           this._log('"' + device.name + '" bluetooth device selected');
 
