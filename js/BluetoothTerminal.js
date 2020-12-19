@@ -5,14 +5,14 @@ class BluetoothTerminal {
   /**
    * Create preconfigured Bluetooth Terminal instance.
    *
-   * @param {!(number|string)} [serviceUuid=0x2A25] - Service UUID.
-   * @param {!(number|string)} [characteristicUuid=0xFFE1] - Characteristic UUID.
+   * @param {!(number|string)} [serviceUuid='f18d63ae-cadc-11e3-aacb-1a514932ac01'] - Service UUID.
+   * @param {!(number|string)} [characteristicUuid='f18d68ae-cadc-11e3-aacb-1a514932ac01'] - Characteristic UUID.
    * @param {string} [receiveSeparator='\n'] - Receive separator.
    * @param {string} [sendSeparator='\n'] - Send separator.
    * @param {Function|undefined} [onConnected=undefined] - Listener for connected event.
    * @param {Function|undefined} [onDisconnected=undefined] - Listener for disconnected event.
    */
-  constructor(serviceUuid = 0xFFE0, characteristicUuid = 0xFFE1, receiveSeparator = '\n', sendSeparator = '\n',
+  constructor(serviceUuid ='f18d63ae-cadc-11e3-aacb-1a514932ac01', characteristicUuid = 'f18d68ae-cadc-11e3-aacb-1a514932ac01', receiveSeparator = '\n', sendSeparator = '\n',
       onConnected = undefined, onDisconnected = undefined) {
     // Used private variables.
     this._receiveBuffer = ''; // Buffer containing not separated data.
